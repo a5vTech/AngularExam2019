@@ -16,7 +16,7 @@ export class QuizComponent implements OnInit {
   ngOnInit() {
   }
 
-  emitQuizClicked() {
+  deleteQuizClicked() {
     this.quizClicked.emit(this.quiz);
   }
 }

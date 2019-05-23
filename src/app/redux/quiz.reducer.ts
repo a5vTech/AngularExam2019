@@ -25,6 +25,7 @@ export function quizReducer(state: QuizState = INITIAL_STATE, action: any) {
       // action payload is id of quiz
       const newArray = state.quizzes.filter(quiz => quiz._id != action.payload);
       //TODO :  CREATE THIS METHOD
+      return tassign(state, {quizzes: newArray});
       break;
 
     case QuizActions.GET_QUIZZES_LOADING:

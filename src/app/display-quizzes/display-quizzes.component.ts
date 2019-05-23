@@ -3,6 +3,7 @@ import {NgRedux} from '@angular-redux/store';
 import {AppState} from '../redux/store';
 import {QuizActions} from '../redux/quiz.actions';
 import {Quiz} from '../entities/quiz';
+import {QuizApiService} from '../api/quiz-api.service';
 
 @Component({
   selector: 'app-display-quizzes',
@@ -14,7 +15,9 @@ export class DisplayQuizzesComponent implements OnInit {
   isLoading: boolean;
   userSearch: string;
 
-  constructor(private ngRedux: NgRedux<AppState>, private quizActions: QuizActions) {
+  constructor(private ngRedux: NgRedux<AppState>,
+              private quizActions: QuizActions,
+              private api: QuizApiService) {
   }
 
   ngOnInit() {
@@ -32,6 +35,10 @@ export class DisplayQuizzesComponent implements OnInit {
     console.log(this.userSearch);
     // this.userSearch = 'Hi there'
     console.log(quiz);
+
+    // Delete from DB
+    this.quizActions.deleteQuiz(quiz._id);
+
   }
 
 }

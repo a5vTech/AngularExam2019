@@ -58,4 +58,17 @@ export class QuizActions {
 
     // this.ngRedux.dispatch({type: QuizActions.GET_QUIZZES_SUCCESS}) // We do not wait for the reponse
   }
+
+  deleteQuiz(id): void {
+    // Delete from db
+    this.api.deleteQuiz(id).subscribe(res => {
+      console.log(res);
+    });
+    //Delete from redux
+    this.ngRedux.dispatch({
+      type: QuizActions.DELETE_QUIZ,
+      payload: id
+    });
+
+  }
 }
