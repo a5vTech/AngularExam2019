@@ -1,0 +1,34 @@
+<form [formGroup]="createQuiz" (ngSubmit)="saveQuiz()">
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="Quiz Title" formControlName="title">
+    </mat-form-field>
+  </div>
+  <div>
+    <button type="button" mat-raised-button color="secondary" (click)="createNewQuestion()">New Question</button>
+  </div>
+
+  <div formArrayName="questions">
+    <div *ngFor="let questionControl of createQuiz.controls.questions.controls; let i=index">
+      <div [formGroupName]="i">
+        <mat-form-field>
+          <input matInput placeholder="Question" formControlName="title">
+        </mat-form-field>
+        <button type="button" mat-raised-button color="secondary" (click)="createNewOption(i)">New Option</button>
+
+        <div formArrayName="options">
+          <div *ngFor="let optionControl of questionControl.controls.options.controls; let j=index">
+            <div [formGroupName]="j">
+              <mat-form-field>
+                <input matInput placeholder="Option" formControlName="answer">
+              </mat-form-field>
+              <mat-checkbox formControlName="correct">Correct answer</mat-checkbox>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button mat-raised-button color="primary">Save Quiz</button>
+</form>
