@@ -7,6 +7,7 @@ import {DisplayQuizzesComponent} from './display-quizzes/display-quizzes.compone
 import {DisplayQuizComponent} from './display-quiz/display-quiz.component';
 import {CreateQuizComponent} from './create-quiz/create-quiz.component';
 import {AuthGuard} from './auth/auth.guard';
+import {UpdateQuizComponent} from './update-quiz/update-quiz.component';
 
 const routes: Routes = [{path: '', redirectTo: 'home/login', pathMatch: 'full'},
   {
@@ -18,7 +19,8 @@ const routes: Routes = [{path: '', redirectTo: 'home/login', pathMatch: 'full'},
     path: 'portal', component: PortalComponent/*, canActivate: [AuthGuard]*/, children: [
       {path: 'display-quizzes', component: DisplayQuizzesComponent},
       {path: 'display-quiz/:id', component: DisplayQuizComponent},
-      {path: 'create-quiz', component: CreateQuizComponent}
+      {path: 'create-quiz', component: CreateQuizComponent},
+      {path: 'update-quiz/:id', component: UpdateQuizComponent}
     ]
   }
 

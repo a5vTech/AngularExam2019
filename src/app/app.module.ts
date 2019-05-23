@@ -25,6 +25,8 @@ import {QuizComponent} from './quiz/quiz.component';
 import {HttpClientModule} from '@angular/common/http';
 import {DisplayQuizComponent} from './display-quiz/display-quiz.component';
 import {CreateQuizComponent} from './create-quiz/create-quiz.component';
+import {QuizPipe} from './pipes/quiz.pipe';
+import { UpdateQuizComponent } from './update-quiz/update-quiz.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import {CreateQuizComponent} from './create-quiz/create-quiz.component';
     DisplayQuizzesComponent,
     QuizComponent,
     DisplayQuizComponent,
-    CreateQuizComponent
+    CreateQuizComponent,
+    QuizPipe,
+    UpdateQuizComponent
   ],
   imports: [
     BrowserModule,
