@@ -6,6 +6,7 @@ import {NgRedux} from '@angular-redux/store';
 import {AppState} from '../redux/store';
 import {until} from 'selenium-webdriver';
 import elementTextContains = until.elementTextContains;
+import {Gender} from '../entities/user';
 
 @Component({
   selector: 'app-update-quiz',
@@ -86,7 +87,23 @@ export class UpdateQuizComponent implements OnInit {
   }
 
   updateQuiz() {
-
+    let quiz = this.createQuiz.value as Quiz;
+    quiz.user = {
+      _id: '1',
+      username: 'Jesper',
+      email: 'jesper2604@gmail.com',
+      gender: Gender.MALE,
+      birthDate: undefined
+    };
+    // Call api and save quiz
+    this.api.createQuiz(quiz).subscribe(quizFromWs => {
+      // Save quiz locally to redux with the quiz returned from WS (Includes the generated id)
+      this.quizactions.createQuiz(quizFromWs);
+      this.router.navigate(['/portal/display-quizzes']);
+    }, error => {
+      // Code to handle WS Error here
+      console.log('Something went wrong: ' + error);
+    });
 
   }
 
