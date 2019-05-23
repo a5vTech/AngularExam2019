@@ -24,7 +24,7 @@ export class QuizApiService {
   }
 
   updateQuiz(quiz: Quiz): Observable<any> {
-    return undefined;
+    return this.http.put(this.baseUrl + '/' + quiz._id, quiz, {responseType: 'text'});
   }
 
   deleteQuiz(id: string): Observable<any> {

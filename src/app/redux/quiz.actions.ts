@@ -71,4 +71,11 @@ export class QuizActions {
     });
 
   }
+
+  updateQuiz(quizFromWs: Quiz) {
+    this.ngRedux.dispatch({
+      type: QuizActions.UPDATE_QUIZ,
+      payload: quizFromWs
+    });
+  }
 }

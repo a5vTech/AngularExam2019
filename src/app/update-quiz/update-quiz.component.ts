@@ -1,12 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {Form, FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Question, Quiz} from '../entities/quiz';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {NgRedux} from '@angular-redux/store';
 import {AppState} from '../redux/store';
 import {until} from 'selenium-webdriver';
 import elementTextContains = until.elementTextContains;
 import {Gender} from '../entities/user';
+import {QuizApiService} from '../api/quiz-api.service';
+import {QuizActions} from '../redux/quiz.actions';
 
 @Component({
   selector: 'app-update-quiz',
@@ -17,7 +19,12 @@ export class UpdateQuizComponent implements OnInit {
   updateQuizGroup: FormGroup;
   quiz: Quiz;
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute, private NgRedux: NgRedux<AppState>) {
+  constructor(private fb: FormBuilder,
+              private route: ActivatedRoute,
+              private NgRedux: NgRedux<AppState>,
+              private api: QuizApiService,
+              private quizactions: QuizActions,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -87,7 +94,8 @@ export class UpdateQuizComponent implements OnInit {
   }
 
   updateQuiz() {
-    let quiz = this.createQuiz.value as Quiz;
+    const id = this.route.snapshot.paramMap.get('id');
+    let quiz = this.updateQuizGroup.value as Quiz;
     quiz.user = {
       _id: '1',
       username: 'Jesper',
@@ -95,10 +103,13 @@ export class UpdateQuizComponent implements OnInit {
       gender: Gender.MALE,
       birthDate: undefined
     };
+    quiz.customerId = 'jtp';
+    quiz._id = id;
+    console.log(quiz);
     // Call api and save quiz
-    this.api.createQuiz(quiz).subscribe(quizFromWs => {
+    this.api.updateQuiz(quiz).subscribe(quizFromWs => {
       // Save quiz locally to redux with the quiz returned from WS (Includes the generated id)
-      this.quizactions.createQuiz(quizFromWs);
+      this.quizactions.updateQuiz(quizFromWs);
       this.router.navigate(['/portal/display-quizzes']);
     }, error => {
       // Code to handle WS Error here

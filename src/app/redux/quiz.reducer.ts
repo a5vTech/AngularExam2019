@@ -19,6 +19,8 @@ export function quizReducer(state: QuizState = INITIAL_STATE, action: any) {
     case QuizActions.UPDATE_QUIZ:
       //new quiz object
       //TODO : Create this method
+      return tassign(state, {quizzes: [...state.quizzes.splice(action.payload._id, 1, action.payload)]});
+
       break;
 
     case QuizActions.DELETE_QUIZ:
