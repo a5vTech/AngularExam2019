@@ -1,13 +1,34 @@
-<div>
-  Quiz title: {{quiz.title}}
-</div>
+<mat-card class="cards">
+  <mat-card-header>
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title>{{quiz.title | uppercase}}</mat-card-title>
+    <mat-card-subtitle>{{quiz.created | date }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-subtitle>Created by: {{quiz.user.username}}</mat-card-subtitle>
+  <mat-card-content>
+    <p>In this quiz we have {{quiz.questions.length}}
+      question{{quiz.questions.length > 1 || quiz.questions.length === 0 ? 's' : ''}}</p>
 
-<div *ngFor="let question of quiz.questions">
-  {{question.title}}
 
-  <div *ngFor="let option of question.options">
-    {{option.answer}}
-  </div>
+    <div *ngFor="let question of quiz.questions">
+      <h3>{{question.title}}</h3>
 
-  <br>
-</div>
+      <div *ngFor="let option of question.options" style="margin-bottom: 15px">
+        <button mat-raised-button (click)="checkCorrectAnswer(question, option)">{{option.answer}}</button>
+      </div>
+
+      <br>
+    </div>
+
+
+    <div>You got {{correctAnswers}} / {{quiz.questions.length}} correct</div>
+
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" routerLink="../../display-quizzes">Done</button>
+  </mat-card-actions>
+</mat-card>
+
+
+

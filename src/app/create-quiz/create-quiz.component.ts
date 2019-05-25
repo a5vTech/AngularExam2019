@@ -23,8 +23,10 @@ export class CreateQuizComponent implements OnInit {
   ngOnInit() {
     this.createQuiz = this.fb.group({
       title: ['', Validators.required],
-      questions: this.fb.array([])
+      questions: this.fb.array([]),
     });
+
+    this.createNewQuestion();
   }
 
 
