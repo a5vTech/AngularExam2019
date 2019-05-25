@@ -21,14 +21,14 @@ describe('workspace-project App', () => {
     element(by.id('username')).sendKeys('Username');
     element(by.id('password')).sendKeys('Password');
     element(by.id('login_btn')).click();
-
     let title = element(by.id('title')).getText();
     expect(title).toEqual('Quizzes');
   });
 
 
   it('3.0 Test that a new quiz is created', () => {
-    browser.get('portal/display-quizzes');
+
+    // browser.get('portal/display-quizzes');
     // browser.get('portal/create-quiz');
     element.all(by.css('.cards')).then((elemsAfter) => {
       let start = elemsAfter.length;

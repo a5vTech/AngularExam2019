@@ -1,18 +1,19 @@
-<div *ngIf="isLoading">
+
+<div>
+  <h1 id="title" class="center-text">Quizzes</h1>
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="Search quiz" value="" [(ngModel)]="userSearch">
+    </mat-form-field>
+  </div>
+</div>
+<h1 *ngIf="isLoading">
   Please wait, we are loading the quizzes
-</div>
-<div>
-  <h1 id="title">Quizzes</h1>
-</div>
-<div>
-  <mat-form-field>
-    <input matInput placeholder="Search quiz" value="" [(ngModel)]="userSearch">
-  </mat-form-field>
-</div>
+</h1>
 
-<div *ngFor="let quiz of quizzes | quizPipe: userSearch">
+<div *ngFor="let quiz of quizzes | quizPipe: userSearch" class="display-quizzes-cards">
 
-  <app-quiz
+  <app-quiz *ngIf="!isLoading"
     [quiz]="quiz"
     (quizClicked)="handleQuizClicked($event)" class="center-div"></app-quiz>
 
