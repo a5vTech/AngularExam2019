@@ -16,7 +16,7 @@ const routes: Routes = [{path: '', redirectTo: 'home/login', pathMatch: 'full'},
     ]
   },
   {
-    path: 'portal', component: PortalComponent/*, canActivate: [AuthGuard]*/, children: [
+    path: 'portal', component: PortalComponent, canActivate: [AuthGuard], children: [
       {path: 'display-quizzes', component: DisplayQuizzesComponent},
       {path: 'display-quiz/:id', component: DisplayQuizComponent},
       {path: 'create-quiz', component: CreateQuizComponent},
