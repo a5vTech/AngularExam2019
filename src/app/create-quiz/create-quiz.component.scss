@@ -1,0 +1,17 @@
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.margin-bot{
+  margin-bottom: 5%;
+}
+
+.display-question-cards{
+  max-width: 100%;
+  display: inline-block;
+  margin: 0 auto;
+}
+
