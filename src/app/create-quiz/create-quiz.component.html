@@ -20,16 +20,16 @@
       </mat-card-subtitle>
     </div>
     <div formArrayName="questions">
-      <div *ngFor="let questionControl of createQuiz.controls.questions.controls; let i=index">
-        <div [formGroupName]="i">
-          <div class="display-question-cards">
-            <mat-card class="margin-bot">
-              <mat-card-title>New question
+      <mat-card class="display-question-cards" *ngFor="let questionControl of createQuiz.controls.questions.controls; let i=index">
+
+        <div >
+          <div [formGroupName]="i">
+            <div>
+              <mat-card-title>Question {{i+1}}
                 <button style="float: right" type="button" mat-raised-button color="secondary"
                         (click)="createNewOption(i)">New Option
                 </button>
               </mat-card-title>
-
               <mat-form-field>
                 <input matInput placeholder="Question" formControlName="title" id="question-title">
               </mat-form-field>
@@ -44,10 +44,11 @@
                   </div>
                 </div>
               </div>
-            </mat-card>
+            </div>
           </div>
         </div>
-      </div>
+      </mat-card>
+
     </div>
 
     <mat-card-title>
