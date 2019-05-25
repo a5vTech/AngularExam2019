@@ -42,7 +42,9 @@ export class DisplayQuizComponent implements OnInit {
     console.log(option.answer);
     console.log(option.correct);
     if (this.clickedOptions.has(option)) {
-      console.log('Already clicked this!');
+      this.snackbar.open("You have already clicked an answer to this question", '', {
+        duration: 1000,
+      });
     } else {
       this.clickedOptions.add(option);
       console.log(this.clickedOptions);
