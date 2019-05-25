@@ -7,7 +7,7 @@ import {LoginComponent} from './login/login.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
-  MatCardModule, MatCheckboxModule,
+  MatCardModule, MatCheckboxModule, MatChipsModule,
   MatDividerModule,
   MatGridListModule,
   MatInputModule,
@@ -27,6 +27,7 @@ import {DisplayQuizComponent} from './display-quiz/display-quiz.component';
 import {CreateQuizComponent} from './create-quiz/create-quiz.component';
 import {QuizPipe} from './pipes/quiz.pipe';
 import { UpdateQuizComponent } from './update-quiz/update-quiz.component';
+
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { UpdateQuizComponent } from './update-quiz/update-quiz.component';
     MatCheckboxModule,
     NgReduxModule,
     NgReduxRouterModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    MatChipsModule
 
   ],
   providers: [],

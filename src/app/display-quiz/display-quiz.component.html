@@ -14,8 +14,12 @@
       <h3>{{question.title}}</h3>
 
       <div *ngFor="let option of question.options" style="margin-bottom: 15px">
-        <button mat-raised-button (click)="checkCorrectAnswer(question, option)">{{option.answer}}</button>
+        <mat-chip-list>
+          <mat-chip (click)="checkCorrectAnswer(question, option)">{{option.answer}}</mat-chip>
+        </mat-chip-list>
       </div>
+
+
 
       <br>
     </div>
