@@ -3,3 +3,10 @@
   display: inline-block;
   margin: 0 auto;
 }
+
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
