@@ -8,13 +8,11 @@ export class QuizPipe implements PipeTransform {
 
 
   transform(quizzes: Quiz[], search?: any): any {
-    console.log(quizzes);
-    console.log(search);
+
     if (search === undefined) {
       return quizzes;
     }
-    // Write code that only returns the quiz objects that match the search
-    // quizzes.forEach(quiz => console.log(quiz.created));
+
 
     return quizzes.filter(quiz => quiz.title.toLowerCase().indexOf(search.toLowerCase()) !== -1 && quiz.title.length > 1);
   }
