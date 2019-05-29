@@ -27,6 +27,7 @@ import {DisplayQuizComponent} from './display-quiz/display-quiz.component';
 import {CreateQuizComponent} from './create-quiz/create-quiz.component';
 import {QuizPipe} from './pipes/quiz.pipe';
 import { UpdateQuizComponent } from './update-quiz/update-quiz.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { UpdateQuizComponent } from './update-quiz/update-quiz.component';
     DisplayQuizComponent,
     CreateQuizComponent,
     QuizPipe,
-    UpdateQuizComponent
+    UpdateQuizComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

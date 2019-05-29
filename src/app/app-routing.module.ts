@@ -8,11 +8,14 @@ import {DisplayQuizComponent} from './display-quiz/display-quiz.component';
 import {CreateQuizComponent} from './create-quiz/create-quiz.component';
 import {AuthGuard} from './auth/auth.guard';
 import {UpdateQuizComponent} from './update-quiz/update-quiz.component';
+import {RegisterComponent} from './register/register.component';
 
 const routes: Routes = [{path: '', redirectTo: 'home/login', pathMatch: 'full'},
   {
     path: 'home', component: HomeComponent, children: [
-      {path: 'login', component: LoginComponent}
+      {path: 'login', component: LoginComponent},
+      {path: 'register', component: RegisterComponent},
+
     ]
   },
   {

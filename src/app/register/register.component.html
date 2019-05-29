@@ -1,0 +1,37 @@
+<div [formGroup]="registerForm" class="center-div">
+  <mat-card class="parent center-div">
+    <mat-card-title class="center-text">Register</mat-card-title>
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput placeholder="Firstname" formControlName="firstname">
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <input matInput placeholder="Lastname" formControlName="lastname">
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <input matInput placeholder="Email" formControlName="email">
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <input matInput placeholder="Address" formControlName="address">
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <input matInput placeholder="Phone number" formControlName="phonenumber">
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <input matInput placeholder="Password" formControlName="password">
+      </mat-form-field>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary">Register</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+
+
