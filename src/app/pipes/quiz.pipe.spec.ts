@@ -94,9 +94,22 @@ describe('QuizPipe', () => {
 
   });
 
-  it('Search title 1 \"\"', () => {
-    let result = pipe.transform(quizzes, 'Title 1');
+  it('Search title 1 \"Title 1\"', () => {
+    let search = 'Title 1';
+    let result = pipe.transform(quizzes, search);
     expect(result.length).toBe(1);
+    for (let i = 0; i < result.length; i++) {
+      expect(result[i].title).toContain(search);
+    }
+
+  });
+
+  it('Search title \"Title\"', () => {
+    let search = 'Title';
+    let result = pipe.transform(quizzes, search);
+    for (let i = 0; i < result.length; i++) {
+      expect(result[i].title).toContain(search);
+    }
 
   });
 
