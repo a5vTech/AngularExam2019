@@ -2,6 +2,7 @@ import {QuizActions} from './quiz.actions';
 import {quizReducer} from './quiz.reducer';
 import {QuizState} from './store';
 import {Quiz} from '../entities/quiz';
+import {del} from 'selenium-webdriver/http';
 
 var deepFreeze = require('deep-freeze');
 
@@ -34,5 +35,23 @@ describe('quiz reducer tests', () => {
     // Assert (expect)
     expect(newStateObj.quizzes.length).toBe(1);
     expect(newStateObj.quizzes[0].title).toBe('Test quiz');
+  });
+
+
+  it('should delete a quiz', () => {
+    let startState = {quizzes: []} as QuizState;
+    deepFreeze(startState);
+    let quiz = {title: 'Test quiz', questions: []} as Quiz;
+    let delActionObj = {type: QuizActions.DELETE_QUIZ, payload: quiz};
+    let createActionObj = {type: QuizActions.CREATE_QUIZ, payload: quiz};
+
+    let newStateObj = quizReducer(startState, createActionObj);
+
+    let x = quizReducer(newStateObj, createActionObj);
+
+    expect(x.quizzes.length).toBe(2);
+    quizReducer(x, delActionObj);
+    expect(newStateObj.quizzes.length).toBe(1);
+
   });
 });
