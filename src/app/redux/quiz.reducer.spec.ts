@@ -3,6 +3,7 @@ import {quizReducer} from './quiz.reducer';
 import {QuizState} from './store';
 import {Quiz} from '../entities/quiz';
 import {del} from 'selenium-webdriver/http';
+import {strictEqual} from 'assert';
 
 var deepFreeze = require('deep-freeze');
 
@@ -54,4 +55,18 @@ describe('quiz reducer tests', () => {
     expect(newStateObj.quizzes.length).toBe(1);
 
   });
+
+
+  it('should update a quiz', () => {
+    let startState = {quizzes: []} as QuizState;
+    deepFreeze(startState);
+    let quiz = {title: 'Test quiz', questions: []} as Quiz;
+    let createActionObj = {type: QuizActions.CREATE_QUIZ, payload: quiz};
+    let newStateObj = quizReducer(startState, createActionObj);
+    quiz = {title: 'UPDATED TEST QUIZ', questions: []} as Quiz;
+    let updateActionObj = {type: QuizActions.UPDATE_QUIZ, payload: quiz}
+    let state2 = quizReducer(newStateObj, updateActionObj);
+
+    expect(newStateObj.quizzes[0].title).not.toEqual(state2.quizzes[0].title)
+  })
 });
