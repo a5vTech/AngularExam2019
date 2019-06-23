@@ -62,22 +62,5 @@ describe('workspace-project App', () => {
 
   });
 
-  it("5.0 Test that search function is finding whats intended", () => {
-
-    //Create new quiz to test on
-    element(by.id('create-quiz-btn')).click();
-    element(by.id('quiz-title')).sendKeys('super fed test quiz');
-    element(by.id('new-question')).click();
-    element(by.id('question-title')).sendKeys('This is the quiz title');
-    element.all(by.css('.option')).get(0).sendKeys('Quiz option 1');
-    element.all(by.css('.option')).get(1).sendKeys('Quiz option 2');
-    element(by.id('save-quiz')).click();
-
-    //Check that the quiz is able to being found
-     element.all(by.css('.search')).sendKeys('super fed test quiz');
-
-    expect(element(by.id('quiz-title'))).toEqual('super fed test quiz');
-    element.all(by.css('.delete.btn')).click();
-  })
 
 });

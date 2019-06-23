@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
       duration: 2000,
     });
 
-    //TEST
     //console.log(this.loginForm);
     if (this.loginForm.valid) {
       this.quizActions.setLoggedIn(true);
