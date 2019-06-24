@@ -98,13 +98,14 @@ export class UpdateQuizComponent implements OnInit {
     let quiz = this.updateQuizGroup.value as Quiz;
     quiz.user = {
       _id: '1',
-      username: 'Jesper',
+      username: 'Sean',
       email: 'jesper2604@gmail.com',
       gender: Gender.MALE,
       birthDate: undefined
     };
     quiz.customerId = 'jtp';
     quiz._id = id;
+    quiz.created = new Date();
     console.log(quiz);
     // Call api and save quiz
     this.api.updateQuiz(quiz).subscribe(quizFromWs => {
